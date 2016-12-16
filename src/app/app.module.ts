@@ -4,12 +4,12 @@ import { LOG_LOGGER_PROVIDERS } from 'angular2-logger/core';
 import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
-import { logReducer } from './reducers/log';
+import { reducer } from './reducers';
 
 @NgModule({
   imports: [
     BrowserModule,
-    StoreModule.provideStore({ log: logReducer })
+    StoreModule.provideStore(reducer)
   ],
   declarations: [
     AppComponent

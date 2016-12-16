@@ -1,20 +1,29 @@
+import { createSelector } from 'reselect';
 import { ActionReducer, Action } from '@ngrx/store';
+import * as log from '../actions/log';
 
-export const ADD_MESSAGE = 'ADD_MESSAGE';
-export const RESET = 'RESET';
+export interface State {
+    messages: String[];
+};
 
-export const logReducer: ActionReducer<string[]> = (state: string[] = [], action: Action) => {
+const initialState: State = {
+    messages: [],
+};
+
+export function reducer(state = initialState, action: log.Actions): State {
     switch (action.type) {
-        case ADD_MESSAGE:
-            return [
-                ...state,
-                action.payload
-            ]
-
-        case RESET:
-            return [];
-
+        case log.ActionTypes.ADD_MESSAGE:
+            return {
+                messages: [
+                    ...state.messages,
+                    action.payload
+                ]
+            }
+        case log.ActionTypes.RESET:
+            return initialState;
         default:
             return state;
     }
 }
+
+export const getMessages = (state: State) => state.messages;
