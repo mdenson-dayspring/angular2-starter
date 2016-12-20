@@ -16,4 +16,11 @@
       </form>
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <ul>
+        <li *ngFor="let log of log$ | async">{{ log }}</li>
+      </ul>
+    </div>
+  </div>
 </main>
