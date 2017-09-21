@@ -27,7 +27,12 @@ export class HomeComponent implements OnInit {
   @Input() readOnly: boolean = false;
   pageState$: Observable<fromMainPage.State>;
 
-  constructor(private store: Store<fromRoot.State>, private fb: FormBuilder, private $log: Logger) {
+  private window = window;
+
+  constructor(
+    private store: Store<fromRoot.State>,
+    private fb: FormBuilder,
+    private $log: Logger) {
     this.pageState$ = store.select(fromRoot.getMainPageState);
 
     this.pageState$.subscribe((state) => {
